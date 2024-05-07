@@ -1,0 +1,52 @@
+<h2>Search authors</h2>
+<form action="/authors" method="GET">
+  <label for="search">Name or ID</label>
+  <input
+    type="text"
+    id="search"
+    name="search"
+    value="<%= searchOptions.search%>"
+  />
+  <button type="submit">Search</button>
+</form>
+<br />
+<table width="100%">
+  <tr>
+    <td>
+      <table border="1" width="100%">
+        <tr>
+          <th>SrNO</th>
+          <th>Name</th>
+          <th>AuthorID</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<% authors.forEach((author,index) => { %>
+
+<table width="100%">
+  <tr>
+    <td>
+      <table cellpadding="10" border="1" width="100%">
+        <tr>
+          <td style="width: 18.5%; text-align: center"><%= index + 1%></td>
+          <td style="width: 18.5%; text-align: center"><%= author.name%></td>
+          <td style="width: 30%; text-align: center"><%= author._id%></td>
+          <td style="width: 13.5%; text-align: center">
+            <form method="Onclick" action="/authors/<%= author.id%>/edit">
+              <button type="submit">Edit</button>
+            </form>
+          </td>
+          <td style="text-align: center">
+            <%- include('../partials/deleteForm', { url :
+            `/authors/${author.id}` })%>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<% })%>

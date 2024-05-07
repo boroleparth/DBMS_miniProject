@@ -1,0 +1,5 @@
+<h2>Author Details</h2>
+<p>Author name: <%= author.name%></p>
+<p>Author ID: <%= uniqueId %></p>
+<a href="/authors/<%= author.id%>/edit">Edit</a>
+<%- include('../partials/deleteForm', { url: `/authors/${author.id}`})%>
